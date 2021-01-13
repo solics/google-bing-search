@@ -1,0 +1,10 @@
+.search-results {
+  max-width: 600px;
+  margin: 0 auto;
+  &__title{
+    color: #444;
+  }
+  @media screen and (max-width: 1024px){
+    max-width: 90%;
+  }
+}

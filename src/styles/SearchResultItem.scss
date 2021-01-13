@@ -1,0 +1,19 @@
+.search-results__item {
+  a {
+    text-decoration: none;
+    p{
+      margin: 0 0 20px 0;
+      color: #333;
+    }
+    .display-link{
+      font-size: 10px;
+      display: block;
+      color: #333;
+      font-style: italic;
+    }
+    &:hover .title-link{
+      text-decoration: underline;
+    }
+  }
+  
+}

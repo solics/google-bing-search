@@ -1,0 +1,36 @@
+.search-form {
+  max-width: 600px;
+  background: #4285f4;
+  padding: 15px 20px;
+  margin: 20px auto;
+  &__inputs{
+    display: flex;
+    justify-content: space-between;
+    input{
+      width: 69%;
+      border:0;
+      padding: 5px;
+      outline: none;
+    }
+    select{
+      width: 29%;
+      border:0;
+      outline: none;
+    }
+  }
+  &__action{
+    margin-top: 10px;
+    button{
+      background-color: #fbbc05;
+      display: block;
+      width: 100px;
+      padding: 5px 10px;
+      margin: 0 auto;
+      border: 0;
+      outline: none;
+    }
+  }
+  @media screen and (max-width: 1024px){
+    max-width: 90%;
+  }
+}
