@@ -3,7 +3,6 @@ import SearchResultItem from '../SearchResultItem'
 
 const SearchResults = (props) => {
   const { response, loading, error } = props.data
-  console.log(props)
   return (
     <div className='search-results'>
       <h3 className='search-results__title'>{props.searchEngine} Results</h3>
