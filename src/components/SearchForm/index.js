@@ -1,43 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { search, cleanResults } from '../../redux/actions/results'
 
-class SearchForm extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      inpQuery : '',
-      selectedSearchEngine: 'all',
-    }
-    this.handleSearch = this.handleSearch.bind(this);
-    this.handleSearchEngine = this.handleSearchEngine.bind(this);
-    this.handleChangeQuery = this.handleChangeQuery.bind(this);
+const SearchForm = () => {
+  const [inpQuery, setInpQuery] = useState('')
+  const [selectedSearchEngine, setSelectedSearchEngine] = useState('all')
+  const dispatch = useDispatch()
+
+  const handleChangeQuery = (e) => {
+    setInpQuery(e.target.value)
+    if (!e.target.value) dispatch(cleanResults())
+  }
+  const handleSearchEngine = (e) => {
+    setSelectedSearchEngine(e.target.value)
+    dispatch(cleanResults())
+  }
+  const onSubmitSearch = (e) => {
+    e.preventDefault()
+    if (inpQuery) dispatch(search(inpQuery, selectedSearchEngine))
   }
 
-  handleChangeQuery(e) {
-    this.setState({inpQuery: e.target.value})
-  }
-
-  handleSearch() {
-    const { inpQuery, selectedSearchEngine} = this.state;
-    if(inpQuery)
-      this.props.search(inpQuery, selectedSearchEngine)
-  }
-
-  handleSearchEngine(e) {
-    this.setState({selectedSearchEngine: e.target.value})
-  }
-  render() {
-    const { inpQuery, selectedSearchEngine} = this.state;
-    return (
-      <div className='search-form'>
+  return (
+    <div className='search-form'>
+      <form onSubmit={onSubmitSearch}>
         <div className='search-form__inputs'>
           <input
-            onChange={this.handleChangeQuery}
+            onChange={handleChangeQuery}
             value={inpQuery}
             type='text'
           />
           <select
             defaultValue={selectedSearchEngine}
-            onChange={this.handleSearchEngine}
+            onChange={handleSearchEngine}
           >
             <option value='all'>All</option>
             <option value='google'>Google</option>
@@ -45,10 +39,10 @@ class SearchForm extends React.Component {
           </select>
         </div>
         <div className='search-form__action'>
-          <button onClick={this.handleSearch}>Search</button>
+          <button type='submit'>Search</button>
         </div>
-      </div>
-    )
-  }
+      </form>
+    </div>
+  )
 }
 export default SearchForm

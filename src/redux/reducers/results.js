@@ -1,14 +1,4 @@
-import {
-  SEARCH_GOOGLE_START,
-  SEARCH_GOOGLE_SUCCESS,
-  SEARCH_GOOGLE_FAIL,
-  SEARCH_GOOGLE_FINISH,
-  SEARCH_BING_START,
-  SEARCH_BING_SUCCESS,
-  SEARCH_BING_FAIL,
-  SEARCH_BING_FINISH,
-  SET_SEARCH_ENGINE,
-} from "../types/results";
+import * as TYPES from '../types/results'
 
 const initialState = {
   resultsGoogle: {
@@ -21,32 +11,32 @@ const initialState = {
     loading: false,
     error: false
   },
-  searchEngine: null,
-};
+  searchEngine: null
+}
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
-    case SET_SEARCH_ENGINE:
+    case TYPES.SET_SEARCH_ENGINE:
       return {
         ...state,
-        searchEngine: action.payload,
+        searchEngine: action.payload
       }
-    case SEARCH_GOOGLE_START: 
+    case TYPES.SEARCH_GOOGLE_START:
       return {
         ...state,
         resultsGoogle: {
           ...state.resultsGoogle,
           loading: true,
           response: [],
-          error: false,
+          error: false
         },
         resultsBing: {
           ...state.resultsBing,
           response: [],
-          error: false,
+          error: false
         }
       }
-    case SEARCH_GOOGLE_SUCCESS: 
+    case TYPES.SEARCH_GOOGLE_SUCCESS:
       return {
         ...state,
         resultsGoogle: {
@@ -54,7 +44,7 @@ export default function(state = initialState, action) {
           response: action.payload
         }
       }
-    case SEARCH_GOOGLE_FAIL: 
+    case TYPES.SEARCH_GOOGLE_FAIL:
       return {
         ...state,
         resultsGoogle: {
@@ -63,7 +53,7 @@ export default function(state = initialState, action) {
         }
       }
 
-    case SEARCH_GOOGLE_FINISH: 
+    case TYPES.SEARCH_GOOGLE_FINISH:
       return {
         ...state,
         resultsGoogle: {
@@ -71,31 +61,31 @@ export default function(state = initialState, action) {
           loading: false
         }
       }
-    
-    case SEARCH_BING_START:
+
+    case TYPES.SEARCH_BING_START:
       return {
         ...state,
         resultsBing: {
           ...state.resultsBing,
           loading: true,
           response: [],
-          error: false,
+          error: false
         },
         resultsGoogle: {
           ...state.resultsGoogle,
           response: [],
-          error: false,
-        },
+          error: false
+        }
       }
-    case SEARCH_BING_SUCCESS: 
+    case TYPES.SEARCH_BING_SUCCESS:
       return {
         ...state,
         resultsBing: {
           ...state.resultsBing,
-          response : action.payload
+          response: action.payload
         }
       }
-    case SEARCH_BING_FAIL: 
+    case TYPES.SEARCH_BING_FAIL:
       return {
         ...state,
         resultsBing: {
@@ -104,7 +94,7 @@ export default function(state = initialState, action) {
         }
       }
 
-    case SEARCH_BING_FINISH: 
+    case TYPES.SEARCH_BING_FINISH:
       return {
         ...state,
         resultsBing: {
@@ -112,7 +102,11 @@ export default function(state = initialState, action) {
           loading: false
         }
       }
+    case TYPES.CLEAN_RESULTS:
+      return {
+        ...initialState
+      }
     default:
-      return state;
+      return state
   }
 }

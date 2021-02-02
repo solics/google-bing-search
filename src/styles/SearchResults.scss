@@ -2,7 +2,7 @@
   max-width: 600px;
   margin: 0 auto;
   &__title{
-    color: #444;
+    color: $text-color-2;
   }
   @media screen and (max-width: 1024px){
     max-width: 90%;

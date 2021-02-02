@@ -1,6 +1,6 @@
 .search-form {
   max-width: 600px;
-  background: #4285f4;
+  background: $primary-color;
   padding: 15px 20px;
   margin: 20px auto;
   &__inputs{
@@ -21,7 +21,7 @@
   &__action{
     margin-top: 10px;
     button{
-      background-color: #fbbc05;
+      background-color: $secondary-color;
       display: block;
       width: 100px;
       padding: 5px 10px;

@@ -3,12 +3,12 @@
     text-decoration: none;
     p{
       margin: 0 0 20px 0;
-      color: #333;
+      color: $text-color-1;
     }
     .display-link{
       font-size: 10px;
       display: block;
-      color: #333;
+      color: $text-color-1;
       font-style: italic;
     }
     &:hover .title-link{

@@ -1,34 +1,31 @@
-import React from 'react';
-import SearchResultItem from '../SearchResultItem';
+import React from 'react'
+import SearchResultItem from '../SearchResultItem'
 
-class SearchResults extends React.Component {
-  render() {
-    const {
-      data: {
-        response,
-        loading,
-        error
-      }
-    } = this.props;
-    
-    return (
-      <div className='search-results'>
-        <h3 className='search-results__title'>{this.props.searchEngine} Results</h3>
-        { loading &&
-          <div>Loading...</div>
+const SearchResults = (props) => {
+  const { response, loading, error } = props.data
+  console.log(props)
+  return (
+    <div className='search-results'>
+      <h3 className='search-results__title'>{props.searchEngine} Results</h3>
+      <div className='search-results__content'>
+        {
+          loading &&
+            <div>Loading...</div>
         }
-        { !loading && !error && response.length > 0 &&
-          response.map(item => <SearchResultItem  key={item.cacheId} item={item}/>)  
+        {
+          !loading && !error && response.length > 0 &&
+          response.map(item => <SearchResultItem key={item.cacheId} item={item} />)
         }
-        { !loading && !error && response.length == 0 &&
-          <div>There's no results.</div>
+        {
+          !loading && !error && response.length === 0 &&
+            <div>There's no results.</div>
         }
-        { error && 
-          <div>An error have ocurred.</div>
+        {
+          error &&
+            <div>An error have ocurred.</div>
         }
       </div>
-    )
-  }
+    </div>
+  )
 }
-
-export default SearchResults;
+export default SearchResults
