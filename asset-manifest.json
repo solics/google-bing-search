@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/synack-eval/static/css/main.49c1d331.chunk.css",
-    "main.js": "/synack-eval/static/js/main.09431c77.chunk.js",
-    "main.js.map": "/synack-eval/static/js/main.09431c77.chunk.js.map",
+    "main.js": "/synack-eval/static/js/main.2b63d0b7.chunk.js",
+    "main.js.map": "/synack-eval/static/js/main.2b63d0b7.chunk.js.map",
     "runtime-main.js": "/synack-eval/static/js/runtime-main.dcfb3aaa.js",
     "runtime-main.js.map": "/synack-eval/static/js/runtime-main.dcfb3aaa.js.map",
-    "static/js/2.bcc283f8.chunk.js": "/synack-eval/static/js/2.bcc283f8.chunk.js",
-    "static/js/2.bcc283f8.chunk.js.map": "/synack-eval/static/js/2.bcc283f8.chunk.js.map",
+    "static/js/2.b709fdf8.chunk.js": "/synack-eval/static/js/2.b709fdf8.chunk.js",
+    "static/js/2.b709fdf8.chunk.js.map": "/synack-eval/static/js/2.b709fdf8.chunk.js.map",
     "index.html": "/synack-eval/index.html",
     "static/css/main.49c1d331.chunk.css.map": "/synack-eval/static/css/main.49c1d331.chunk.css.map",
-    "static/js/2.bcc283f8.chunk.js.LICENSE.txt": "/synack-eval/static/js/2.bcc283f8.chunk.js.LICENSE.txt"
+    "static/js/2.b709fdf8.chunk.js.LICENSE.txt": "/synack-eval/static/js/2.b709fdf8.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.dcfb3aaa.js",
-    "static/js/2.bcc283f8.chunk.js",
+    "static/js/2.b709fdf8.chunk.js",
     "static/css/main.49c1d331.chunk.css",
-    "static/js/main.09431c77.chunk.js"
+    "static/js/main.2b63d0b7.chunk.js"
   ]
 }
