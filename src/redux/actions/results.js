@@ -4,17 +4,10 @@ import { sendQuery } from '../../utils/http'
 export const search = (query, searchEngine) => async (dispatch) => {
   dispatch({ type: TYPES.SET_SEARCH_ENGINE, payload: searchEngine })
 
-  if (searchEngine === 'google' || searchEngine === 'bing') {
-    dispatch({ type: searchEngine === 'google' ? TYPES.SEARCH_GOOGLE_START : TYPES.SEARCH_BING_START })
-    try {
-      const items = await sendQuery(searchEngine, query)
-      dispatch({ type: searchEngine === 'google' ? TYPES.SEARCH_GOOGLE_SUCCESS : TYPES.SEARCH_BING_SUCCESS, payload: items })
-    } catch (error) {
-      dispatch({ type: searchEngine === 'google' ? TYPES.SEARCH_GOOGLE_FAIL : TYPES.SEARCH_BING_FAIL })
-    } finally {
-      dispatch({ type: searchEngine === 'google' ? TYPES.SEARCH_GOOGLE_FINISH : TYPES.SEARCH_BING_FINISH })
-    }
-  } else { // if it's both
+  const isGoogle = searchEngine === 'google'
+  const allSearchEngines = searchEngine === 'all'
+
+  if (allSearchEngines) {
     dispatch({ type: TYPES.SEARCH_GOOGLE_START })
     dispatch({ type: TYPES.SEARCH_BING_START })
 
@@ -34,6 +27,17 @@ export const search = (query, searchEngine) => async (dispatch) => {
       dispatch({ type: TYPES.SEARCH_BING_FAIL })
     } finally {
       dispatch({ type: TYPES.SEARCH_BING_FINISH })
+    }
+  } else {
+    const engine = isGoogle ? 'GOOGLE' : 'BING'
+    dispatch({ type: TYPES[`SEARCH_${engine}_START`] })
+    try {
+      const items = await sendQuery(searchEngine, query)
+      dispatch({ type: TYPES[`SEARCH_${engine}_SUCCESS`], payload: items })
+    } catch (error) {
+      dispatch({ type: TYPES[`SEARCH_${engine}_FAIL`] })
+    } finally {
+      dispatch({ type: TYPES[`SEARCH_${engine}_FINISH`] })
     }
   }
 }

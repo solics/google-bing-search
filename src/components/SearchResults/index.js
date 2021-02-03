@@ -1,8 +1,11 @@
 import React from 'react'
 import SearchResultItem from '../SearchResultItem'
 
-const SearchResults = (props) => {
+export default function SearchResults (props) {
   const { response, loading, error } = props.data
+  const hasResults = !loading && !error && response.length > 0
+  const emptyResults = !loading && !error && !response.length
+
   return (
     <div className='search-results'>
       <h3 className='search-results__title'>{props.searchEngine} Results</h3>
@@ -12,11 +15,11 @@ const SearchResults = (props) => {
             <div>Loading...</div>
         }
         {
-          !loading && !error && response.length > 0 &&
-          response.map(item => <SearchResultItem key={item.cacheId} item={item} />)
+          hasResults &&
+          response.map(item => <SearchResultItem key={item.id} item={item} />)
         }
         {
-          !loading && !error && response.length === 0 &&
+          emptyResults &&
             <div>There's no results.</div>
         }
         {
@@ -27,4 +30,3 @@ const SearchResults = (props) => {
     </div>
   )
 }
-export default SearchResults

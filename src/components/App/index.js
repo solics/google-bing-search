@@ -1,29 +1,37 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import SearchForm from '../SearchForm'
 import SearchResults from '../SearchResults'
 import '../../styles/styles.scss'
 
-import { useSelector } from 'react-redux'
+const GOOGLE = 'google'
+const BING = 'bing'
+const ALL_ENGINES = 'all'
 
-const App = () => {
-  const bingData = useSelector((state) => state.results.resultsBing)
-  const googleData = useSelector((state) => state.results.resultsGoogle)
-  const searchEngine = useSelector((state) => state.results.searchEngine)
+export default function App () {
+  const {
+    resultsBing: bingData,
+    resultsGoogle: googleData,
+    searchEngine
+  } = useSelector((state) => state.results)
+
+  const isGoogle = searchEngine === GOOGLE
+  const isBing = searchEngine === BING
+  const bothSearchEngines = searchEngine === ALL_ENGINES
 
   return (
     <div>
       <SearchForm />
       {
         searchEngine &&
-        (searchEngine === 'google' || searchEngine === 'all') &&
+        (isGoogle || bothSearchEngines) &&
           <SearchResults searchEngine='Google' data={googleData} />
       }
       {
         searchEngine &&
-        (searchEngine === 'bing' || searchEngine === 'all') &&
+        (isBing || bothSearchEngines) &&
           <SearchResults searchEngine='Bing' data={bingData} />
       }
     </div>
   )
 }
-export default App

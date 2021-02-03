@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SearchResultItem = ({ item }) => {
+export default function SearchResultItem ({ item }) {
   return (
     <div className='search-results__item'>
       <a target='_blank' rel='noreferrer' href={item.link}>
@@ -11,4 +11,3 @@ const SearchResultItem = ({ item }) => {
     </div>
   )
 }
-export default SearchResultItem

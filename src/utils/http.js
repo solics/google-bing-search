@@ -15,7 +15,7 @@ export const sendQuery = async (searchEngine, query) => {
                 title: item.title,
                 displayLink: item.displayLink,
                 link: item.link,
-                id: item.cacheId
+                id: item.cacheId || item.formattedUrl
               }))
             }
             resolve(items)

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { search, cleanResults } from '../../redux/actions/results'
 
-const SearchForm = () => {
+export default function SearchForm () {
   const [inpQuery, setInpQuery] = useState('')
   const [selectedSearchEngine, setSelectedSearchEngine] = useState('all')
   const dispatch = useDispatch()
@@ -45,4 +45,3 @@ const SearchForm = () => {
     </div>
   )
 }
-export default SearchForm
